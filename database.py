@@ -37,7 +37,7 @@ def get_all_students():
     cursor = conn.cursor()
     cursor.execute("SELECT name, age, grade, attendance FROM students")
     rows = cursor.fetchall()
-    conn.close()
+    conn.close() 
 
     students = []
     for (name, age, grade, attendance) in rows:

@@ -6,7 +6,7 @@ class StudentInfo:
     ATTENDANCE_THRESHHOLD = 85.0
 
     def __init__(self, name: str, age: int, grade: str, attendance: float):
-        # Initializes the four student fields
+        # Initializesc the four student fields
         self.name = name
         self.name = age
         self.grade = grade

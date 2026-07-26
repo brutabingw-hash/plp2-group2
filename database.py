@@ -14,7 +14,13 @@ def init_db():
 
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute( " CREATE TABLE IF NOT EXISTS students ( id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, age INTEGER NOT NULL, grade TEXT NOT NULL,attendance REAL NOT NULL )" )
+    cursor.execute(""" CREATE TABLE IF NOT EXISTS students( 
+        id INTEGER PRIMARY KEY AUTOINCREMENT, 
+        name TEXT NOT NULL, 
+        age INTEGER NOT NULL, 
+        grade TEXT NOT NULL,
+        attendance REAL NOT NULL )""")
+        
     conn.commit()
     conn.close()
 

@@ -1,9 +1,20 @@
 
-from database import get_all_students
+from database import get_all_students, init_db
 
 from student import StudentInfo
 
 
+# Hassan   ← he writes student_registration() HERE ==========================================================================
+def student_registration():
+    ...
+
+# christa  ← she writes display_students() HERE==============================================================================
+def display_students():
+    ...
+
+
+
+# Joy ======================================================================================================================
 def analyze_students():
     # Options 3
     print("\n--- Student Records")
@@ -39,6 +50,11 @@ def analyze_students():
     print(f"Needs Improvement        : {needs_improvement_count}")
 
 
+
+
+
+
+# Grace ================================================================================================================
 #Welcome screen and main menu (Option display)
 def print_menu():
     print("""==========================================
@@ -53,3 +69,31 @@ Please choose an option:
 2. View Student Records
 3. Analyse Student Records
 4. Exit""")
+
+# Ismael ================================================================================================================
+
+def main():
+    """Controls the overall program flow using a loop and menu."""
+    init_db()
+    print("Welcome!")
+
+    while True:
+        print_menu()
+        choice = input("Choose an option (1-4): ").strip()
+
+        if choice == "1":
+            student_registration()
+        elif choice == "2":
+            display_students()
+        elif choice == "3":
+            analyze_students()
+        elif choice == "4":
+            print("\nGoodbye! Closing the system.")
+            break
+        else:
+            print("Invalid choice. Please pick a number from 1 to 4.")
+
+
+if __name__ == "__main__":
+    main()
+

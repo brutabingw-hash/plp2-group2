@@ -1,9 +1,10 @@
 
+import os
 import sqlite3
 
 from student import StudentInfo
 
-DB_NAME = "students.db"
+DB_NAME = os.path.join(os.path.dirname(os.path.abspath(__file__)), "students.db")
 
 
 def get_connection():

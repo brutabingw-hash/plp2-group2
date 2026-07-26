@@ -174,7 +174,9 @@ Please choose an option:
 1. Register a Student
 2. View Student Records
 3. Analyse Student Records
-4. Exit""")
+4. Update a Student
+5. Delete a Student
+6. Exit""")
 
 # Ismael ================================================================================================================
 
@@ -192,12 +194,12 @@ def main():
         elif choice == "3":
             analyze_students()
         elif choice == "4":
+            update_student_record()
+        elif choice == "5":
+            delete_student_record()
+        elif choice == "6":
             print("\nGoodbye! Closing the system.")
             break
-        elif choice == "5":
-            update_student_record()
-        elif choice == "6":
-            delete_student_record()
         else:
             print("Invalid choice. Please pick a number from 1 to 6.")
 

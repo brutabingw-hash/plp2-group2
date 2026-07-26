@@ -1,40 +1,44 @@
-# PLP2 — Group 2 (Education)
-A simple command-line (CLI) student management system developed in Python with an SQLite database.
+PLP2 — Group 2 (Education)
+Simple command line (CLI) student management system, developed in Python with an SQLite database.
 
-## Description
+Description
 This program allows a teacher to:
-1. Enroll a new student (name, age, grade, attendance)
-2. Display the list of all registered students
-3. Analyze students as "Good Standing" (average ≥ 75%) vs. "Needs Improvement"
-4. Exit the program
-
-## Project Structure
-```
+Register a new student (name, age, grade/level, attendance rate)
+View list of all registered students
+Analyze students in “Good Standing” vs “Needs Improvement” according to their attendance rate
+Update an existing student's information
+Delete a student
+Exit the program
+Project structure
 plp2-group2/
 ├── main.py # Entry point: menu, main loop, display, analysis
 ├── student.py # StudentInfo class + Good Standing rule (75%)
-├── database.py # SQLite connection: table creation, adding, loading students
+├── database.py # SQLite connection: create table, add, update, delete, load students
 └── README.md
-```
-
-## Installation and Launch
-```bash
+Installation and launch
+bash
 git clone <repo-link>
 cd plp2-group2
 python main.py
 
-```
-No external dependencies: the project uses only the standard Python library (`sqlite3`).
+No external dependencies: the project only uses the standard Python library (sqlite3).
+Use
+When launched, the main menu is displayed with 6 options:
 
-## Usage
-On launch, the main menu appears with 4 options:
-```
-1. Register a student
-2. Show all students
-3. Analyze students (Good Standing)
-4. Exit
-```
-Choose a number and follow the on-screen instructions. The data is automatically saved to the SQLite database between each session.
+=========================================================== 
+Student Online Record-Keeping System
+===========================================================
+
+Welcome to the Student Online Record-Keeping System!
+Please choose an option:
+1. Register a Student
+2. View Student Records
+3. Student Records Analysis
+4. Update a Student
+5. Delete a Student
+6. Exit
+
+Choose a number and follow the on-screen instructions. The data is automatically saved in the SQLite database between each session.
 
 ## Team and Task Allocation
 | Member | Contribution |

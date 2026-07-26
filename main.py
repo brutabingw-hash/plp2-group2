@@ -1,12 +1,49 @@
 
-from database import get_all_students, init_db
+from database import get_all_students, init_db, add_student
 
 from student import StudentInfo
 
 
 # Hassan   ← he writes student_registration() HERE ==========================================================================
 def student_registration():
-    ...
+    print("\n--- Register a New Student ---")
+
+    name = input("Enter student name: ").strip()
+    while not name:
+        print("Name cannot be empty.")
+        name = input("Enter student name: ").strip()
+
+    while True:
+        age_input = input("Enter student age: ").strip()
+        try:
+            age = int(age_input)
+            if age <= 0:
+                print("Age must be a positive whole number.")
+                continue
+            break
+        except ValueError:
+            print("Please enter a valid whole number for age.")
+
+    grade = input("Enter student grade: ").strip()
+    while not grade:
+        print("Grade cannot be empty.")
+        grade = input("Enter student grade: ").strip()
+
+    while True:
+        attendance_input = input("Enter attendance percentage (0-100): ").strip()
+        try:
+            attendance = float(attendance_input)
+            if not (0 <= attendance <= 100):
+                print("Attendance must be between 0 and 100.")
+                continue
+            break
+        except ValueError:
+            print("Please enter a valid number for attendance.")
+
+    student = StudentInfo(name, age, grade, attendance)
+    add_student(student)
+    print(f"\nStudent '{name}' registered successfully!")
+
 
 # christa  ← she writes display_students() HERE==============================================================================
 def display_students():

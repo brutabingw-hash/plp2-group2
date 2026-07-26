@@ -8,7 +8,7 @@ class StudentInfo:
     def __init__(self, name: str, age: int, grade: str, attendance: float):
         # Initializesc the four student fields
         self.name = name
-        self.name = age
+        self.age = age
         self.grade = grade
         self.attendance = attendance
 

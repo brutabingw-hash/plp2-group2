@@ -45,9 +45,17 @@ def student_registration():
     print(f"\nStudent '{name}' registered successfully!")
 
 
-# christa  ← she writes display_students() HERE==============================================================================
+# christa ==============================================================================
 def display_students():
-    ...
+    print("\n--- Student Records ---")
+    students = get_all_students()
+
+    if not students:
+        print("No students registered yet.")
+        return
+
+    for student in students:
+        print(f"{student.name} | Age: {student.age} | Grade: {student.grade} | Attendance: {student.attendance}% ({student.standing()})")
 
 
 

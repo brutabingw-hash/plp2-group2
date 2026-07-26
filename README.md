@@ -62,7 +62,7 @@ Choose a number and follow the on-screen instructions. Data is automatically sav
 | Joy | `StudentInfo` class and Good Standing rule (`student.py`) |
 | Ismael | SQLite integration (`database.py`), main loop (`main()`), student update and delete (`update_student()`) |
 | Christa | Displaying students (`display_students()`) and tests |
-| Rosanne | Demonstration, screenshots, user flow diagram, (README.md) |
+| Rosanne | Demonstration, screenshots, user flow diagram, (`README.md`) |
 
 ## Database
 

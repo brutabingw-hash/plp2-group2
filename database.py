@@ -52,12 +52,13 @@ def get_student_by_name(name):
     return StudentInfo(row[0], row[1], row[2], row[3])
 
 
-def update_student(name, age=None, grade=None, attendance=None):
+def update_student(name, new_name=None, age=None, grade=None, attendance=None):
     current = get_student_by_name(name)
     if current is None:
         return
 
     # keep the old value wherever the user left the field blank (None)
+    final_name = new_name if new_name is not None else current.name
     new_age = age if age is not None else current.age
     new_grade = grade if grade is not None else current.grade
     new_attendance = attendance if attendance is not None else current.attendance
@@ -65,8 +66,8 @@ def update_student(name, age=None, grade=None, attendance=None):
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
     cursor.execute(
-        "UPDATE students SET age = ?, grade = ?, attendance = ? WHERE name = ?",
-        (new_age, new_grade, new_attendance, name)
+        "UPDATE students SET name = ?, age = ?, grade = ?, attendance = ? WHERE name = ?",
+        (final_name, new_age, new_grade, new_attendance, name)
     )
     conn.commit()
     conn.close()

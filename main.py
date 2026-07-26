@@ -56,6 +56,9 @@ def update_student_record():
           f"Grade: {student.grade} | Attendance: {student.attendance:.1f}%")
     print("Leave a field blank to keep it unchanged.\n")
 
+    new_name_input = input("New name: ").strip()
+    new_name = new_name_input if new_name_input else None
+
     age_input = input("New age: ").strip()
     age = None
     if age_input:
@@ -87,7 +90,7 @@ def update_student_record():
             except ValueError:
                 attendance_input = input("Please enter a valid number for attendance: ").strip()
 
-    update_student(name, age=age, grade=grade, attendance=attendance)
+    update_student(name, new_name=new_name, age=age, grade=grade, attendance=attendance)
     print(f"\nStudent '{name}' updated successfully!")
 
 def delete_student_record():
@@ -100,7 +103,7 @@ def delete_student_record():
         return
 
     confirm = input(f"Are you sure you want to delete '{student.name}'? (yes/no): ").strip().lower()
-    if confirm == "yes":
+    if confirm in ("y","yes"):
         delete_student(name)
         print(f"Student '{name}' deleted successfully!")
     else:

@@ -83,3 +83,6 @@ The `StudentInfo` class (in `student.py`) models a student with these 4 fields a
 ## License
 
 This project is an academic project completed as part of the Peer Learning Project II.
+
+
+Link to our Slides: https://canva.link/fxgwhvtxj8hqyj4

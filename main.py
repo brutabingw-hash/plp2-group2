@@ -95,7 +95,7 @@ def analyze_students():
 #Welcome screen and main menu (Option display)
 def print_menu():
     print("""==========================================
-  Student Online Record-Keeping System
+  Student Record-Keeping System
 ==========================================
 
 Welcome to the Student Online Record-Keeping System!

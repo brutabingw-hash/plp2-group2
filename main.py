@@ -167,7 +167,7 @@ def analyze_students():
 #Welcome screen and main menu (Option display)
 def print_menu():
     print("""==========================================
-  Student Record-Keeping System
+EDUTERM  Student Record-Keeping System
 ==========================================
 
 Welcome to the Student Record-Keeping System!

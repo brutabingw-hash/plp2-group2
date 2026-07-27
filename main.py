@@ -170,7 +170,7 @@ def print_menu():
   Student Record-Keeping System
 ==========================================
 
-Welcome to the Student Online Record-Keeping System!
+Welcome to the Student Record-Keeping System!
 
 Please choose an option:
 

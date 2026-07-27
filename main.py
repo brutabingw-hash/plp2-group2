@@ -1,5 +1,4 @@
-
-from database import get_all_students, init_db, add_student
+from database import get_all_students, init_db, add_student, get_student_by_name, update_student, delete_student
 
 from student import StudentInfo
 
@@ -44,10 +43,83 @@ def student_registration():
     add_student(student)
     print(f"\nStudent '{name}' registered successfully!")
 
+def update_student_record():
+    print("\n--- Update a Student Record ---")
+    name = input("Enter the name of the student to update: ").strip()
 
-# christa  ← she writes display_students() HERE==============================================================================
+    student = get_student_by_name(name)
+    if student is None:
+        print(f"No student found with the name '{name}'.")
+        return
+
+    print(f"\nCurrent record: {student.name} | Age: {student.age} | "
+          f"Grade: {student.grade} | Attendance: {student.attendance:.1f}%")
+    print("Leave a field blank to keep it unchanged.\n")
+
+    new_name_input = input("New name: ").strip()
+    new_name = new_name_input if new_name_input else None
+
+    age_input = input("New age: ").strip()
+    age = None
+    if age_input:
+        while True:
+            try:
+                age = int(age_input)
+                if age <= 0:
+                    print("Age must be a positive whole number.")
+                    age_input = input("New age: ").strip()
+                    continue
+                break
+            except ValueError:
+                age_input = input("Please enter a valid whole number for age: ").strip()
+
+    grade_input = input("New grade: ").strip()
+    grade = grade_input if grade_input else None
+
+    attendance_input = input("New attendance percentage (0-100): ").strip()
+    attendance = None
+    if attendance_input:
+        while True:
+            try:
+                attendance = float(attendance_input)
+                if not (0 <= attendance <= 100):
+                    print("Attendance must be between 0 and 100.")
+                    attendance_input = input("New attendance percentage (0-100): ").strip()
+                    continue
+                break
+            except ValueError:
+                attendance_input = input("Please enter a valid number for attendance: ").strip()
+
+    update_student(name, new_name=new_name, age=age, grade=grade, attendance=attendance)
+    print(f"\nStudent '{name}' updated successfully!")
+
+def delete_student_record():
+    print("\n--- Delete a Student Record ---")
+    name = input("Enter the name of the student to delete: ").strip()
+
+    student = get_student_by_name(name)
+    if student is None:
+        print(f"No student found with the name '{name}'.")
+        return
+
+    confirm = input(f"Are you sure you want to delete '{student.name}'? (yes/no): ").strip().lower()
+    if confirm in ("y","yes"):
+        delete_student(name)
+        print(f"Student '{name}' deleted successfully!")
+    else:
+        print("Deletion cancelled.")
+
+# christa ==============================================================================
 def display_students():
-    ...
+    print("\n--- Student Records ---")
+    students = get_all_students()
+
+    if not students:
+        print("No students registered yet.")
+        return
+
+    for student in students:
+        print(f"{student.name} | Age: {student.age} | Grade: {student.grade} | Attendance: {student.attendance}% ({student.standing()})")
 
 
 
@@ -105,7 +177,9 @@ Please choose an option:
 1. Register a Student
 2. View Student Records
 3. Analyse Student Records
-4. Exit""")
+4. Update a Student
+5. Delete a Student
+6. Exit""")
 
 # Ismael ================================================================================================================
 
@@ -113,11 +187,9 @@ def main():
     """Controls the overall program flow using a loop and menu."""
     init_db()
     print("Welcome!")
-
     while True:
         print_menu()
-        choice = input("Choose an option (1-4): ").strip()
-
+        choice = input("Choose an option (1-6): ").strip()
         if choice == "1":
             student_registration()
         elif choice == "2":
@@ -125,10 +197,14 @@ def main():
         elif choice == "3":
             analyze_students()
         elif choice == "4":
+            update_student_record()
+        elif choice == "5":
+            delete_student_record()
+        elif choice == "6":
             print("\nGoodbye! Closing the system.")
             break
         else:
-            print("Invalid choice. Please pick a number from 1 to 4.")
+            print("Invalid choice. Please pick a number from 1 to 6.")
 
 
 if __name__ == "__main__":
